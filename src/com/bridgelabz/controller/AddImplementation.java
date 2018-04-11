@@ -1,8 +1,14 @@
 package com.bridgelabz.controller;
 
+import java.io.BufferedReader;
+
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 import com.bridgelabz.pojo.Appoinment;
 import com.bridgelabz.pojo.Doctor;
 import com.bridgelabz.pojo.Patient;
@@ -11,11 +17,12 @@ public class AddImplementation implements Add {
 	Scanner scanner = new Scanner(System.in);
 	
 	ArrayList<Patient> patientList =new ArrayList<>();
-	ArrayList<Doctor> doctorList = new ArrayList<>();
+	 ArrayList<Doctor> doctorList = new ArrayList<>();
 	ArrayList<Appoinment> appoinmentList = new ArrayList<>();
 	String patientName,doctorName,doctorSpecialization,doctorAvailability;
 	int patientId,patientAge,doctorId;
 	long patientContactNumber;
+	ObjectMapper objectmapper;
 	@Override
 	public void addPatient() 
 	{
@@ -39,6 +46,22 @@ public class AddImplementation implements Add {
 	@Override
 	public void addDoctor() 
 	{
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader("doctor.json"));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Doctor>> type = new TypeReference<ArrayList<Doctor>>() {};
+				doctorList = objectmapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		
 		Doctor doctor = new Doctor();
 		System.out.println("Enter doctor id: ");
 		doctorId = scanner.nextInt();
