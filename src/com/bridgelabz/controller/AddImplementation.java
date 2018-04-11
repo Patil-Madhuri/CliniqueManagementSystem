@@ -9,8 +9,7 @@ import com.bridgelabz.pojo.Patient;
 
 public class AddImplementation implements Add {
 	Scanner scanner = new Scanner(System.in);
-	Patient patient = new Patient();
-	Doctor doctor = new Doctor();
+	
 	ArrayList<Patient> patientList =new ArrayList<>();
 	ArrayList<Doctor> doctorList = new ArrayList<>();
 	ArrayList<Appoinment> appoinmentList = new ArrayList<>();
@@ -20,6 +19,7 @@ public class AddImplementation implements Add {
 	@Override
 	public void addPatient() 
 	{
+		Patient patient = new Patient();
 		System.out.println("Enter patient id: ");
 		patientId = scanner.nextInt();
 		patient.setPatientId(patientId);
@@ -39,6 +39,7 @@ public class AddImplementation implements Add {
 	@Override
 	public void addDoctor() 
 	{
+		Doctor doctor = new Doctor();
 		System.out.println("Enter doctor id: ");
 		doctorId = scanner.nextInt();
 		doctor.setDoctorid(doctorId);
@@ -53,6 +54,7 @@ public class AddImplementation implements Add {
 		doctor.setDoctorAvailability(doctorAvailability);
 		doctorList.add(doctor);
 		System.out.println(doctorList);
+	
 	}
 
 	@Override

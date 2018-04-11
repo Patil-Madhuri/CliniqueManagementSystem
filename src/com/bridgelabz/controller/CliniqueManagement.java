@@ -13,17 +13,16 @@ public class CliniqueManagement
 		AddImplementation addImpl = new AddImplementation();
 		DisplayImplementation displayImpl = new DisplayImplementation();
 		SearchImplementation searchImpl = new SearchImplementation();
-		int choice=0;
+		 
+		int choice =0;
 		do
 		{
-			System.out.println("1.Add Doctor to Clinique"
-					+ "\n2.Search Doctor By Name, Id or Availabilty"
-					+"\n3.Search Patients by Name ,Id or Mobile Number"
-					+ "\n4.Take Appoinment \n5.Display Doctor List"
-					+ "\n6.Display Patient List \n7.Display Appoinment List"
-					+ "\n8.Display Best Doctor of Clinique \n9.Exit");
+			System.out.println("1.Add Doctor to Clinique \n2.Search Doctor By Name, Id or Availabilty \n3.Search Patients by Name ,Id or Mobile Number"
+					+ "\n4.Take Appoinment \n5.Display Doctor List\n6.Display Patient List \n7.Display Appoinment List"
+					+ "	\n8.Display Best Doctor of Clinique \n9.Exit");
+			
 			System.out.println("Enter your choice: ");
-			choice =scanner.nextInt();
+			 choice =scanner.nextInt();
 			switch(choice)
 			{
 			case 1:
@@ -63,6 +62,6 @@ public class CliniqueManagement
 				System.exit(0);
 			}
 		}while(choice > 0);
-		scanner.close();
+		
 	}
 }

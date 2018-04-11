@@ -9,7 +9,11 @@ import com.bridgelabz.pojo.Patient;
 public class SearchImplementation implements Search
 {
 	Scanner scanner = new Scanner(System.in);
-	int lChoice=0;
+	int mChoice=0;
+	Doctor doctor = new Doctor();
+	Patient patient = new Patient();
+	AddImplementation addImplementation = new AddImplementation();
+	
 	public void searchPatient()
 	{
 		do
@@ -19,8 +23,8 @@ public class SearchImplementation implements Search
 		System.out.println("3 Search Patient by Contact Number");
 		System.out.println("4.Exit");
 		System.out.println("Enter your choice:");
-		 lChoice = scanner.nextInt();
-		switch (lChoice) 
+		 mChoice = scanner.nextInt();
+		switch (mChoice) 
 		{
 		case 1:
 			searchPatientByName();			
@@ -36,7 +40,7 @@ public class SearchImplementation implements Search
 		default:
 			System.out.println("Invalid choice");
 		}
-		}while(lChoice > 0);
+		}while(mChoice > 0);
 	}
 	
 	public void searchDoctor()
@@ -49,8 +53,8 @@ public class SearchImplementation implements Search
 		System.out.println("4 Search Doctor by Availability");
 		System.out.println("5 Exit");
 		System.out.println("Enter your choice:");
-		 lChoice = scanner.nextInt();
-		switch (lChoice) 
+		 mChoice = scanner.nextInt();
+		switch (mChoice) 
 		{
 		case 1:
 			searchDoctorByName();
@@ -69,7 +73,7 @@ public class SearchImplementation implements Search
 		default:
 			System.out.println("Invalid choice");
 		}
-		}while(lChoice > 0);
+		}while(mChoice > 0);
 	}
 
 
@@ -81,21 +85,35 @@ public class SearchImplementation implements Search
 	}
 
 	@Override
-	public ArrayList<Patient> searchPatientByContactNo() {
+	public ArrayList<Patient>  searchPatientByContactNo() {
 		
 		return null;
 	}
 
 	@Override
-	public ArrayList<Patient> searchPatientById() {
+	public ArrayList<Patient>  searchPatientById() {
 		
 		return null;
 	}
 	
 	@Override
-	public ArrayList<Doctor> searchDoctorByName() {
-		
-		return null;
+	public ArrayList<Doctor> searchDoctorByName() 
+	{		
+//		System.out.println("Enter the doctor name to search doctor: ");
+//		String doctorName = scanner.next();
+//		for(int i=0; i <doctorList.size();i++)
+//		{
+//			doctor = doctorList.get(i);
+//			if(doctorName.equals(doctor.getDoctorName()))
+//			{
+//				System.out.println(doctor);
+//			}
+//			else
+//			{
+//				System.out.println("Doctor is not available");
+//			}
+//		}
+	return null;
 	}
 
 	@Override
