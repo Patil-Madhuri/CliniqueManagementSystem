@@ -13,7 +13,8 @@ public class SearchImplementation implements Search
 	Doctor doctor = new Doctor();
 	Patient patient = new Patient();
 	AddImplementation addImplementation = new AddImplementation();
-	
+	ArrayList<Patient> patientList =new ArrayList<>();
+	 ArrayList<Doctor> doctorList = new ArrayList<>();
 	public void searchPatient()
 	{
 		do
@@ -97,23 +98,23 @@ public class SearchImplementation implements Search
 	}
 	
 	@Override
-	public ArrayList<Doctor> searchDoctorByName() 
+	public Doctor searchDoctorByName() 
 	{		
-//		System.out.println("Enter the doctor name to search doctor: ");
-//		String doctorName = scanner.next();
-//		for(int i=0; i <doctorList.size();i++)
-//		{
-//			doctor = doctorList.get(i);
-//			if(doctorName.equals(doctor.getDoctorName()))
-//			{
-//				System.out.println(doctor);
-//			}
-//			else
-//			{
-//				System.out.println("Doctor is not available");
-//			}
-//		}
-	return null;
+		System.out.println("Enter the doctor name to search doctor: ");
+		String doctorName = scanner.next();
+		for(int i=0; i <doctorList.size();i++)
+		{
+			doctor = doctorList.get(i);
+			if(doctorName.equals(doctor.getDoctorName()))
+			{
+				return doctor;
+			}
+			else
+			{
+				System.out.println("Doctor is not available");
+			}
+		}
+	return doctor;
 	}
 
 	@Override

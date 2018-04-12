@@ -1,7 +1,7 @@
 package com.bridgelabz.controller;
 
 import java.io.BufferedReader;
-
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,10 +22,22 @@ public class AddImplementation implements Add {
 	String patientName,doctorName,doctorSpecialization,doctorAvailability;
 	int patientId,patientAge,doctorId;
 	long patientContactNumber;
-	ObjectMapper objectmapper;
+	ObjectMapper objectmapper = new ObjectMapper();
 	@Override
 	public void addPatient() 
 	{
+		try
+		{
+			File file = new File("patient.json");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Patient>> type = new TypeReference<ArrayList<Patient>>() {};
+				patientList = objectmapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
 		Patient patient = new Patient();
 		System.out.println("Enter patient id: ");
 		patientId = scanner.nextInt();
@@ -41,14 +53,22 @@ public class AddImplementation implements Add {
 		patient.setPatientContactNumber(patientContactNumber);
 		patientList.add(patient);
 		System.out.println(patientList);
+		objectmapper.writeValue(file, patientList);
+		System.out.println("Patient Added Successfully");
+		} catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void addDoctor() 
 	{
+		
 		try
 		{
-			BufferedReader reader = new BufferedReader(new FileReader("doctor.json"));
+			File file = new File("doctor.json");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String arrayToJson;
 			if((arrayToJson = reader.readLine()) != null)
 			{
@@ -57,10 +77,6 @@ public class AddImplementation implements Add {
 				
 			}
 			reader.close();
-		}catch(IOException e)
-		{
-			e.printStackTrace();
-		}
 		
 		Doctor doctor = new Doctor();
 		System.out.println("Enter doctor id: ");
@@ -77,6 +93,13 @@ public class AddImplementation implements Add {
 		doctor.setDoctorAvailability(doctorAvailability);
 		doctorList.add(doctor);
 		System.out.println(doctorList);
+		//System.out.println(file);
+			objectmapper.writeValue(file, doctorList);
+			System.out.println("Doctor Added Successfully");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	
 	}
 
