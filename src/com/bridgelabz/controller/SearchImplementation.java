@@ -23,6 +23,9 @@ public class SearchImplementation implements Search
 	ArrayList<Patient> patientList =new ArrayList<>();
 	 ArrayList<Doctor> doctorList = new ArrayList<>();
 	 ObjectMapper objectMapper = new ObjectMapper();
+	 File doctorFile = new File("doctor.json");
+	 File patientFile = new File("patient.json");
+	 boolean status = true;
 	public void searchPatient()
 	{
 		do
@@ -45,11 +48,12 @@ public class SearchImplementation implements Search
 			searchPatientByContactNo();		
 			break;
 		case 4:
+			status=false;
 			break;
 		default:
 			System.out.println("Invalid choice");
 		}
-		}while(mChoice > 0);
+		}while(status);
 	}
 	
 	public void searchDoctor()
@@ -78,30 +82,126 @@ public class SearchImplementation implements Search
 			searchDoctorByAvailability();
 			break;
 		case 5:
+			status = false;
 			break;
 		default:
 			System.out.println("Invalid choice");
 		}
-		}while(mChoice > 0);
+		}while(status);
 	}
 
 
 	@Override
 	public void searchPatientByName() 
 	{
-		
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(patientFile));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Patient>> type = new TypeReference<ArrayList<Patient>>() {};
+				patientList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		System.out.println("Enter the patient name to search patient: ");
+		String patientName = scanner.next();
+		for(int i=0; i <patientList.size();i++)
+		{
+			patient = patientList.get(i);
+			if(patientName.equals(patient.getPatientName()))
+			{
+				System.out.println(patient);
+				break;
+			}
+			else
+			{
+				System.out.println("Patient not found");
+				System.out.println("-------------------------");
+				break;
+			}
+		}
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	
 		
 	}
 
 	@Override
 	public void searchPatientByContactNo() {
-		
-		
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(patientFile));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Patient>> type = new TypeReference<ArrayList<Patient>>() {};
+				patientList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		System.out.println("Enter the patient contact number to search patient: ");
+		long patientContactNumber = scanner.nextLong();
+		for(int i=0; i <patientList.size();i++)
+		{
+			patient = patientList.get(i);
+			if(patientContactNumber == (patient.getPatientContactNumber()))
+			{
+				System.out.println(patient);
+				break;
+			}
+			else
+			{
+				System.out.println("Patient not found");
+				System.out.println("-------------------------");
+				break;
+			}
+		}
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	
 	}
 
 	@Override
 	public void searchPatientById() {
-		
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(patientFile));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Patient>> type = new TypeReference<ArrayList<Patient>>() {};
+				patientList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		System.out.println("Enter the patient Id to search patient: ");
+		int patientId = scanner.nextInt();
+		for(int i=0; i <patientList.size();i++)
+		{
+			patient = patientList.get(i);
+			if(patientId == (patient.getPatientId()))
+			{
+				System.out.println(patient);
+				break;
+			}
+			else
+			{
+				System.out.println("Patient not found");
+				System.out.println("-------------------------");
+				break;
+			}
+		}
+	
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -110,8 +210,7 @@ public class SearchImplementation implements Search
 	{	
 		try
 		{
-			File file = new File("doctor.json");
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			BufferedReader reader = new BufferedReader(new FileReader(doctorFile));
 			String arrayToJson;
 			if((arrayToJson = reader.readLine()) != null)
 			{
@@ -130,7 +229,12 @@ public class SearchImplementation implements Search
 				System.out.println(doctor);
 				break;
 			}
-
+			else
+			{
+				System.out.println("Doctor not found");
+				System.out.println("-------------------------");
+				break;
+			}
 		}
 		}catch(IOException e)
 		{
@@ -140,20 +244,116 @@ public class SearchImplementation implements Search
 	}
 
 	@Override
-	public void searchDoctorById() {
+	public void searchDoctorById() 
+	{
+		try
+		{			
+			BufferedReader reader = new BufferedReader(new FileReader(doctorFile));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Doctor>> type = new TypeReference<ArrayList<Doctor>>() {};
+				doctorList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		System.out.println("Enter the doctor id to search doctor: ");
+		int doctorId = scanner.nextInt();
+		for(int i=0; i <doctorList.size();i++)
+		{
+			doctor = doctorList.get(i);
+			if(doctorId == doctor.getDoctorid())
+			{
+				System.out.println(doctor);
+				break;
+			}
+			else
+			{
+				System.out.println("Doctor not found");
+				System.out.println("-------------------------");
+				break;
+			}
+		}
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	
 		
 	
 	}
 
 	@Override
 	public void searchDoctorBySpecialization() {
-	
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(doctorFile));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Doctor>> type = new TypeReference<ArrayList<Doctor>>() {};
+				doctorList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		System.out.println("Enter the doctor specialization to search doctor: ");
+		String doctorSpecialization = scanner.next();
+		for(int i=0; i <doctorList.size();i++)
+		{
+			doctor = doctorList.get(i);
+			if(doctorSpecialization.equals(doctor.getDoctorSpecialization()))
+			{
+				System.out.println(doctor);
+				break;
+			}
+			else
+			{
+				System.out.println("Doctor not found");
+				System.out.println("-------------------------");
+				break;
+			}
+		}
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	
 	}
 
 	@Override
 	public void searchDoctorByAvailability() {
-		
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(doctorFile));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Doctor>> type = new TypeReference<ArrayList<Doctor>>() {};
+				doctorList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		System.out.println("Enter the doctor availability time  to search doctor: ");
+		String doctorAvailability= scanner.next();
+		for(int i=0; i <doctorList.size();i++)
+		{
+			doctor = doctorList.get(i);
+			if(doctorAvailability.equals(doctor.getDoctorAvailability()))
+			{
+				System.out.println(doctor);
+				break;
+			}
+			else
+			{
+				System.out.println("Doctor not found");
+				System.out.println("-------------------------");
+				break;
+			}
+		}
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

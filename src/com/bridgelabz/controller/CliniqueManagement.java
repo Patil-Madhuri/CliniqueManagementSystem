@@ -62,6 +62,6 @@ public class CliniqueManagement
 				System.exit(0);
 			}
 		}while(choice > 0);
-		
+		scanner.close();
 	}
 }

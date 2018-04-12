@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -55,6 +56,7 @@ public class AddImplementation implements Add {
 		System.out.println(patientList);
 		objectmapper.writeValue(file, patientList);
 		System.out.println("Patient Added Successfully");
+		System.out.println("-------------------------");
 		} catch (IOException e) 
 		{
 			e.printStackTrace();
@@ -64,7 +66,6 @@ public class AddImplementation implements Add {
 	@Override
 	public void addDoctor() 
 	{
-		
 		try
 		{
 			File file = new File("doctor.json");
@@ -96,6 +97,8 @@ public class AddImplementation implements Add {
 		//System.out.println(file);
 		objectmapper.writeValue(file, doctorList);
 		System.out.println("Doctor Added Successfully");
+		System.out.println("-------------------------");
+	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -104,8 +107,43 @@ public class AddImplementation implements Add {
 	}
 
 	@Override
-	public void takeAppoinment() {
-
-	}
-
+	public void takeAppoinment() 
+	{
+		Doctor doctor = new Doctor();
+		try
+		{
+			File file = new File("doctor.json");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Doctor>> type = new TypeReference<ArrayList<Doctor>>() {};
+				doctorList = objectmapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
+		
+		System.out.println("Enter the doctor name to take the appoinment");
+		doctorName = scanner.next();
+		if(doctorName.equals(doctor.getDoctorName()))
+		{
+			System.out.println("Enter the date to take an appoinment: ");
+			Date date = new Date();
+				File file1 = new File("appoinment.json");
+				BufferedReader reader1 = new BufferedReader(new FileReader(file1));
+				String arrayToJson1;
+				if((arrayToJson1 = reader.readLine()) != null)
+				{
+					TypeReference<ArrayList<Appoinment>> type = new TypeReference<ArrayList<Appoinment>>() {};
+					appoinmentList = objectmapper.readValue(arrayToJson, type);
+				}
+				reader.close();
+				addPatient();
+			objectmapper.writeValue(file, appoinmentList);
+		}
+		}catch(IOException e)
+			{	
+			e.printStackTrace();
+			}
+		}
 }
