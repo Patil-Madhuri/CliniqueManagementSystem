@@ -1,34 +1,38 @@
 package com.bridgelabz.pojo;
 
-import java.util.Date;
-
 public class Appoinment 
 {
 	private Patient patient;
-	private Date date;
-	private int id;
+	private String doctorName;
+	private String date;
+	private int noOfPatients;
+	public int getNoOfPatients() {
+		return noOfPatients;
+	}
+	public void setNoOfPatients(int noOfPatients) {
+		this.noOfPatients = noOfPatients;
+	}
 	public Patient getPatient() {
 		return patient;
 	}
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-	public Date getDate() {
+	public String getDoctorName() {
+		return doctorName;
+	}
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
+	}
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	@Override
 	public String toString() {
-		return "Appoinment [Patient=" + patient + ", date=" + date + ", id=" + id + "]";
+		return "Appoinment [patient=" + patient + ", doctorName=" + doctorName + ", date=" + date + "]";
 	}
-	
 	
 }

@@ -4,6 +4,13 @@ public class Doctor
 {
 	private int doctorid;
 	private String doctorName,doctorAvailability,doctorSpecialization;
+	private int noOfPatients;
+	public int getNoOfPatients() {
+		return noOfPatients;
+	}
+	public void setNoOfPatients(int noOfPatients) {
+		this.noOfPatients = noOfPatients;
+	}
 	public int getDoctorid() {
 		return doctorid;
 	}
@@ -31,8 +38,10 @@ public class Doctor
 	@Override
 	public String toString() {
 		return "Doctor [doctorid=" + doctorid + ", doctorName=" + doctorName + ", doctorAvailability="
-				+ doctorAvailability + ", doctorSpecialization=" + doctorSpecialization + "]";
+				+ doctorAvailability + ", doctorSpecialization=" + doctorSpecialization + ", getNoOfPatients="
+				+ noOfPatients + "]";
 	}
+	
 	
 	
 }
