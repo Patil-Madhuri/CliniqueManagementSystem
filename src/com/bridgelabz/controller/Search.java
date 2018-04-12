@@ -1,18 +1,13 @@
 package com.bridgelabz.controller;
 
-import java.util.ArrayList;
-
-import com.bridgelabz.pojo.Doctor;
-import com.bridgelabz.pojo.Patient;
-
 public interface Search
 {
-	public ArrayList<Patient>  searchPatientByName();
-	public ArrayList<Patient>  searchPatientByContactNo();
-	public ArrayList<Patient>  searchPatientById();
-	public Doctor searchDoctorByName();
-	public ArrayList<Doctor> searchDoctorById();
-	public ArrayList<Doctor> searchDoctorBySpecialization();
-	public ArrayList<Doctor> searchDoctorByAvailability();
+	public void  searchPatientByName();
+	public void  searchPatientByContactNo();
+	public void searchPatientById();
+	public void searchDoctorByName();
+	public void searchDoctorById();
+	public void searchDoctorBySpecialization();
+	public void searchDoctorByAvailability();
 
 }

@@ -94,8 +94,8 @@ public class AddImplementation implements Add {
 		doctorList.add(doctor);
 		System.out.println(doctorList);
 		//System.out.println(file);
-			objectmapper.writeValue(file, doctorList);
-			System.out.println("Doctor Added Successfully");
+		objectmapper.writeValue(file, doctorList);
+		System.out.println("Doctor Added Successfully");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

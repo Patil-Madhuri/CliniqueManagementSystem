@@ -1,7 +1,14 @@
 package com.bridgelabz.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 import com.bridgelabz.pojo.Doctor;
 import com.bridgelabz.pojo.Patient;
@@ -15,6 +22,7 @@ public class SearchImplementation implements Search
 	AddImplementation addImplementation = new AddImplementation();
 	ArrayList<Patient> patientList =new ArrayList<>();
 	 ArrayList<Doctor> doctorList = new ArrayList<>();
+	 ObjectMapper objectMapper = new ObjectMapper();
 	public void searchPatient()
 	{
 		do
@@ -79,27 +87,39 @@ public class SearchImplementation implements Search
 
 
 	@Override
-	public ArrayList<Patient> searchPatientByName() 
+	public void searchPatientByName() 
 	{
 		
-		return null;
+		
 	}
 
 	@Override
-	public ArrayList<Patient>  searchPatientByContactNo() {
+	public void searchPatientByContactNo() {
 		
-		return null;
+		
 	}
 
 	@Override
-	public ArrayList<Patient>  searchPatientById() {
+	public void searchPatientById() {
 		
-		return null;
+		
 	}
 	
 	@Override
-	public Doctor searchDoctorByName() 
-	{		
+	public void searchDoctorByName() 
+	{	
+		try
+		{
+			File file = new File("doctor.json");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Doctor>> type = new TypeReference<ArrayList<Doctor>>() {};
+				doctorList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+			reader.close();
 		System.out.println("Enter the doctor name to search doctor: ");
 		String doctorName = scanner.next();
 		for(int i=0; i <doctorList.size();i++)
@@ -107,32 +127,33 @@ public class SearchImplementation implements Search
 			doctor = doctorList.get(i);
 			if(doctorName.equals(doctor.getDoctorName()))
 			{
-				return doctor;
+				System.out.println(doctor);
+				break;
 			}
-			else
-			{
-				System.out.println("Doctor is not available");
-			}
+
 		}
-	return doctor;
-	}
-
-	@Override
-	public ArrayList<Doctor> searchDoctorById() {
-		
-		return null;
-	}
-
-	@Override
-	public ArrayList<Doctor> searchDoctorBySpecialization() {
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 	
-		return null;
 	}
 
 	@Override
-	public ArrayList<Doctor> searchDoctorByAvailability() {
+	public void searchDoctorById() {
 		
-		return null;
+	
+	}
+
+	@Override
+	public void searchDoctorBySpecialization() {
+	
+	
+	}
+
+	@Override
+	public void searchDoctorByAvailability() {
+		
 	}
 
 }
