@@ -5,13 +5,7 @@ public class Appoinment
 	private Patient patient;
 	private String doctorName;
 	private String date;
-	private int noOfPatients;
-	public int getNoOfPatients() {
-		return noOfPatients;
-	}
-	public void setNoOfPatients(int noOfPatients) {
-		this.noOfPatients = noOfPatients;
-	}
+
 	public Patient getPatient() {
 		return patient;
 	}
