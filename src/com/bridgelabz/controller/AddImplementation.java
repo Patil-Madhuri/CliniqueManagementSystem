@@ -1,5 +1,10 @@
 package com.bridgelabz.controller;
-
+/***************************************************************************
+ * @purpose : Add doctor,patient in the Clinique and take appoinment
+ * @author  : Madhuri Chaudhari
+ * @version : 1.0
+ * @date    : 11/04/2018
+ ***************************************************************************/
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +27,11 @@ public class AddImplementation implements Add {
 	int patientId,patientAge,doctorId;
 	long patientContactNumber;
 	ObjectMapper objectmapper = new ObjectMapper();
+	
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Add#addPatient()
+	 * add patient to the clinique
+	 */
 	@Override
 	public Patient addPatient() 
 	{
@@ -67,6 +77,10 @@ public class AddImplementation implements Add {
 		return patient;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Add#addDoctor()
+	 * add doctor to clinique
+	 */
 	@Override
 	public void addDoctor() 
 	{
@@ -99,6 +113,11 @@ public class AddImplementation implements Add {
 		System.out.println("Doctor Added Successfully");
 		System.out.println("-------------------------");
 		}
+	
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Add#takeAppoinment()
+	 * take appoinment
+	 */
 	@Override
 	public void takeAppoinment()
 	{	

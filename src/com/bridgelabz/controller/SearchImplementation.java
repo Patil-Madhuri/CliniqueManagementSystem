@@ -1,5 +1,13 @@
 package com.bridgelabz.controller;
-
+/***************************************************************************
+ * @purpose : Search the doctor by id, name,specialization and
+ * 			availability in the cliniue
+ * 			Search the patient by id name and contact number in
+ * 			the clinique
+ * @author  : Madhuri Chaudhari
+ * @version : 1.0
+ * @date    : 11/04/2018
+ ***************************************************************************/
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,6 +28,11 @@ public class SearchImplementation implements Search
 	 File doctorFile = new File("doctor.json");
 	 File patientFile = new File("patient.json");
 	 boolean status = true;
+	 
+	 
+	/**
+	 *  Search patient
+	 */
 	public void searchPatient()
 	{
 		do
@@ -50,6 +63,9 @@ public class SearchImplementation implements Search
 		}while(status);
 	}
 	
+	/**
+	 * search doctor 
+	 */
 	public void searchDoctor()
 	{
 		do
@@ -86,6 +102,10 @@ public class SearchImplementation implements Search
 
 
 	
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchPatientByName()
+	 * Search patient by name
+	 */
 	@Override
 	public void searchPatientByName() 
 	{
@@ -111,6 +131,10 @@ public class SearchImplementation implements Search
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchPatientByContactNo()
+	 * Search patient by contact number
+	 */
 	@Override
 	public void searchPatientByContactNo() 
 	{
@@ -134,6 +158,10 @@ public class SearchImplementation implements Search
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchPatientById()
+	 * Search patient by id
+	 */
 	@Override
 	public void searchPatientById() {
 		patientList = ReadDataFromFile.readFile(patientFile, Patient[].class);
@@ -154,6 +182,10 @@ public class SearchImplementation implements Search
 		}	
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchDoctorByName()
+	 * Search doctor by name
+	 */
 	@Override
 	public void searchDoctorByName() 
 	{	
@@ -176,6 +208,10 @@ public class SearchImplementation implements Search
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchDoctorById()
+	 * Search doctor by id
+	 */
 	@Override
 	public void searchDoctorById() 
 	{
@@ -197,6 +233,10 @@ public class SearchImplementation implements Search
 		}	
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchDoctorBySpecialization()
+	 * Search doctor by specialization
+	 */
 	@Override
 	public void searchDoctorBySpecialization() {
 		doctorList = ReadDataFromFile.readFile(doctorFile, Doctor[].class);
@@ -217,6 +257,10 @@ public class SearchImplementation implements Search
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.bridgelabz.controller.Search#searchDoctorByAvailability()
+	 * Search doctor by availability
+	 */
 	@Override
 	public void searchDoctorByAvailability() {
 		doctorList = ReadDataFromFile.readFile(doctorFile, Doctor[].class);

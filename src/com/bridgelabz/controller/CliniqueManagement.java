@@ -1,5 +1,10 @@
 package com.bridgelabz.controller;
-
+/***************************************************************************
+ * @purpose : Clinique Management system
+ * @author  : Madhuri Chaudhari
+ * @version : 1.0
+ * @date    : 11/04/2018
+ ***************************************************************************/
 import java.util.Scanner;
 public class CliniqueManagement 
 {
