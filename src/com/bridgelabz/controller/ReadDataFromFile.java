@@ -39,7 +39,9 @@ public class ReadDataFromFile
 			
 			e.printStackTrace();
 		}
-		return arrayList;
-		
-}
+		return arrayList;	
+	}
+	
+	
+
 }

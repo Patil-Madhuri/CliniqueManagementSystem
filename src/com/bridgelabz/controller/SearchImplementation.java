@@ -140,11 +140,11 @@ public class SearchImplementation implements Search
 	{
 		patientList = ReadDataFromFile.readFile(patientFile, Patient[].class);
 		System.out.println("Enter the patient contact number to search patient: ");
-		long patientContactNumber = scanner.nextLong();
+		String patientContactNumber = scanner.next();
 		for(int i=0; i <patientList.size();i++)
 		{
 			patient = patientList.get(i);
-			if(patientContactNumber == (patient.getPatientContactNumber()))
+			if(patientContactNumber.equals(patient.getPatientContactNumber()))
 			{
 				System.out.println(patient);
 			}

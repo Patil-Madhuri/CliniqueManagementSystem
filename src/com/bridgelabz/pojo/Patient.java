@@ -9,7 +9,7 @@ public class Patient
 {
 	private String patientName;
 	private int patientId,patientAge;
-	private long patientContactNumber;
+	private String patientContactNumber;
 	/**
 	 * @return patient name
 	 */
@@ -52,14 +52,14 @@ public class Patient
 	/**
 	 * @return patient contact number
 	 */
-	public long getPatientContactNumber() {
+	public String getPatientContactNumber() {
 		return patientContactNumber;
 	}
 	/**
 	 * @param patientContactNumber
 	 * set patient contact number
 	 */
-	public void setPatientContactNumber(long patientContactNumber) {
+	public void setPatientContactNumber(String patientContactNumber) {
 		this.patientContactNumber = patientContactNumber;
 	}
 	/* (non-Javadoc)

@@ -23,9 +23,9 @@ public class AddImplementation implements Add {
 	File doctorFile  =  new File("doctor.json");
 	File patientFile  =  new File("patient.json");
 	File appoinmentFile  =  new File("appoinment.json");
-	String patientName,doctorName,doctorSpecialization,doctorAvailability;
+	String patientName,doctorName,doctorSpecialization,doctorAvailability, patientContactNumber;;
 	int patientId,patientAge,doctorId;
-	long patientContactNumber;
+	
 	ObjectMapper objectmapper = new ObjectMapper();
 	
 	/* (non-Javadoc)
@@ -61,7 +61,13 @@ public class AddImplementation implements Add {
 		patientAge = scanner.nextInt();
 		patient.setPatientAge(patientAge);
 		System.out.println("Enter patient contact number: ");
-		patientContactNumber = scanner.nextLong();
+		patientContactNumber = scanner.next();
+		while (!isTenDigit(patientContactNumber)) 
+		{
+			System.out.println("Invalid mobile number");
+			System.out.println("Please enter number again");
+			patientContactNumber = scanner.next();
+}
 		patient.setPatientContactNumber(patientContactNumber);
 		patientList.add(patient);
 		System.out.println(patientList);
@@ -180,4 +186,14 @@ public class AddImplementation implements Add {
 		}
 	}
 		
+	public static boolean isTenDigit(String number)
+	{
+		String matcher="\\d{10}";
+		if((number.matches(matcher)))
+		{
+			return true;
+			
+		}
+		return false;
+	}
 }
