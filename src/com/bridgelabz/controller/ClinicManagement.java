@@ -6,7 +6,7 @@ package com.bridgelabz.controller;
  * @date    : 11/04/2018
  ***************************************************************************/
 import java.util.Scanner;
-public class CliniqueManagement 
+public class ClinicManagement 
 {
 	static
 	{
@@ -15,9 +15,7 @@ public class CliniqueManagement
 	public static void main(String[] args) 
 	{
 		Scanner scanner = new Scanner(System.in);
-		AddImplementation addImpl = new AddImplementation();
-		DisplayImplementation displayImpl = new DisplayImplementation();
-		SearchImplementation searchImpl = new SearchImplementation();
+		ClinicManagementImpl cilinique = new ClinicManagementImpl();
 		 
 		int choice =0;
 		do
@@ -32,35 +30,35 @@ public class CliniqueManagement
 			{
 			case 1:
 				System.out.println("*****Add Doctor*****");
-				addImpl.addDoctor();
+				cilinique.addDoctor();
 				break;
 			case 2:
 				System.out.println("*****Search Doctor By Name, Id or Availabilty*****");
-				searchImpl.searchDoctor();
+				cilinique.searchDoctor();
 				break;
 			case 3:
 				System.out.println("*****Search Patients by Name ,Id or Mobile Number*****");
-				searchImpl.searchPatient();
+				cilinique.searchPatient();
 				break;
 			case 4:
 				System.out.println("*****Take Appoinment*****");
-				addImpl.takeAppoinment();
+				cilinique.takeAppoinment();
 				break;
 			case 5:
 				System.out.println("*****Doctor List*****");
-				displayImpl.doctorList();
+				cilinique.doctorList();
 				break;
 			case 6:
 				System.out.println("*****Patient List*****");
-				displayImpl.patientList();
+				cilinique.patientList();
 				break;
 			case 7:
 				System.out.println("*****Appoinment List*****");
-				displayImpl.appoinmentList();
+				cilinique.appoinmentList();
 				break;
 			case 8:
 				System.out.println("*****Best Doctor of clinique*****");
-				displayImpl.bestDoctorOfClinique();
+				cilinique.bestDoctorOfClinique();
 				break;
 			case 9:
 				System.out.println("*****Thanks*****");
